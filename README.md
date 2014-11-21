@@ -148,7 +148,7 @@ A standardised approach for developing AngularJS applications in teams. This sty
 
     ```javascript
     function BaseCtrl () {
-      this.doSomething = function () {
+      _thisdoSomething = function () {
 
       };
     }
@@ -160,7 +160,7 @@ A standardised approach for developing AngularJS applications in teams. This sty
     AnotherCtrl.prototype = Object.create(BaseCtrl.prototype);
 
     function AnotherCtrl () {
-      this.anotherSomething = function () {
+      _thisanotherSomething = function () {
 
       };
     }
@@ -173,7 +173,7 @@ A standardised approach for developing AngularJS applications in teams. This sty
     ```javascript
     // avoid
     function MainCtrl () {
-      this.doSomething = function () {
+      _thisdoSomething = function () {
 
       };
     }
@@ -245,7 +245,7 @@ A standardised approach for developing AngularJS applications in teams. This sty
 
     ```javascript
     function SomeService () {
-      this.someMethod = function () {
+      _thissomeMethod = function () {
 
       };
     }
@@ -411,7 +411,7 @@ A standardised approach for developing AngularJS applications in teams. This sty
     ```javascript
     // avoid
     function SomeCtrl () {
-      this.startsWithLetterA = function (items) {
+      _thisstartsWithLetterA = function (items) {
         return items.filter(function (item) {
           return /^a/i.test(item.name);
         });
@@ -445,12 +445,12 @@ A standardised approach for developing AngularJS applications in teams. This sty
     ```javascript
     // avoid
     function MainCtrl (SomeService) {
-      var _this = this;
+      var vm = this;
       // unresolved
-      _this.something;
+      vm.something;
       // resolved asynchronously
       SomeService.doSomething().then(function (response) {
-        _this.something = response;
+        vm.something = response;
       });
     }
     angular
